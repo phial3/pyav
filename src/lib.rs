@@ -382,7 +382,7 @@ impl PyVideoReader {
 }
 
 #[pymodule]
-fn video_reader<'py>(_py: Python<'py>, m: &Bound<'py, PyModule>) -> PyResult<()> {
+fn pyav<'py>(_py: Python<'py>, m: &Bound<'py, PyModule>) -> PyResult<()> {
     env_logger::init();
     // Add the VideoReader class to the module
     m.add_class::<PyVideoReader>()?;

@@ -1,5 +1,5 @@
 <h1 align="center">
-  <code>video_reader-rs</code>
+  <code>pyav</code>
 </h1>
 <p align="center">A python module to decode videos based on rust ffmpeg-next, with a focus on ML use cases.</p>
 
@@ -20,13 +20,13 @@ added.
 
 NOTE: other functionalities of `decord` are not implemented (yet?).
 
-Benchmark indicates that `video_reader-rs` is performing equally or better than `decord`, while using less memory.
+Benchmark indicates that `pyav` is performing equally or better than `decord`, while using less memory.
 At least on the intended ML uses cases where video resolution remains reasonable, eg not 4K videos.
 
 ## 🛠️ Installation
 ### Install via pip
 ```bash
-pip install video-reader-rs
+pip install pyav
 ```
 Should work with python >= 3.8 on recent linux x86_64 and macos.
 
@@ -37,7 +37,7 @@ Install maturin:
 pip install maturin
 ```
 
-Activate a virtual-env where you want to use the video_reader library and build the library as follows:
+Activate a virtual-env where you want to use the pyav library and build the library as follows:
 ```bash
 maturin develop --release
 ```
@@ -49,10 +49,17 @@ the `--release` flag ensures the Rust part of the code is compiled in release mo
 maturin develop --release --features ffmpeg_6_0
 ```
 
+## test
+
+```bash
+## python >= 3.11
+pip install numpy tqdm decord2
+```
+
 ## 💻 Usage
 Decoding a video is as simple as:
 ```python
-from video_reader import PyVideoReader
+from pyav import PyVideoReader
 
 vr = PyVideoReader(filename)
 # or if you want to resize and use a specific number of threads
@@ -122,7 +129,7 @@ print(info_dict)
 
 If you have some memory limitations that wont let you decode the entire video at once, you can decode by chunk like so:
 ```python
-from video_reader import PyVideoReader
+from pyav import PyVideoReader
 
 videoname = "/path/to/your/video.mp4"
 vr = PyVideoReader(videoname)
@@ -140,10 +147,10 @@ for i in range(0, video_length, chunk_size):
 ```
 
 ## 🧪 Experimental support for Hardware Acceleration
-You need to install `video-reader-rs` from source by cloning this repo and running `maturin develop -r` or `maturin develop -r --features ffmpeg_6_0` if you have ffmpeg >= 6.0. Your ffmpeg installation should have support for cuda. Check with `ffmpeg -version | grep cuda` for example.
+You need to install `pyav` from source by cloning this repo and running `maturin develop -r` or `maturin develop -r --features ffmpeg_6_0` if you have ffmpeg >= 6.0. Your ffmpeg installation should have support for cuda. Check with `ffmpeg -version | grep cuda` for example.
 
 ```python
-from video_reader import PyVideoReader
+from pyav import PyVideoReader
 
 videoname = "/path/to/your/video.mp4"
 vr = PyVideoReader(videoname, device='cuda')
@@ -182,7 +189,7 @@ Options:
 Tested on a laptop with 15Gb of RAM, with ubuntu 22.04 and python 3.10.
 Run this script:
 ```python
-from video_reader import PyVideoReader
+from pyav import PyVideoReader
 from time import time
 
 def bench_video_decode(filename, compress_factor, resize):

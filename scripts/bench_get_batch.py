@@ -3,13 +3,13 @@ from pathlib import Path
 from time import time
 
 import numpy as np
-from video_reader import PyVideoReader
+from pyav import PyVideoReader
 from decord import VideoReader
 from tqdm import tqdm
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Benchmarking video_reader vs decord")
+    parser = argparse.ArgumentParser(description="Benchmarking pyav vs decord")
     parser.add_argument("--filename", "-f", type=str, help="Path to the video file or directory containing video files")
     parser.add_argument("--batch_size", "-b", type=int, default=32, help="Number of frames in each batch")
     parser.add_argument("--num_batches", "-n", type=int, default=5, help="Number of batches to test")
@@ -67,7 +67,7 @@ def compare_results(r):
     dec_res = [x[1] for x in r]
     vidrs_res_flat = list(np.array(vidrs_res).flat)
     dec_res_flat = list(np.array(dec_res).flat)
-    print(f"Average duration for video_reader: {np.mean(vidrs_res_flat):.4f} +-{np.std(vidrs_res_flat):.4f}")
+    print(f"Average duration for pyav: {np.mean(vidrs_res_flat):.4f} +-{np.std(vidrs_res_flat):.4f}")
     print(f"Average duration for decord: {np.mean(dec_res_flat):.4f} +-{np.std(dec_res_flat):.4f}")
 
 
