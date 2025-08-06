@@ -3,6 +3,10 @@
 </h1>
 <p align="center">A python module to decode videos based on rust ffmpeg-next, with a focus on ML use cases.</p>
 
+this is a fork of [video_reader-rs](https://github.com/gcanat/video_reader-rs.git)
+
+--------------
+
 ## 💡 Why yet another library based on ffmpeg ?
 
 When training ML models on videos, it is usefull to load small sub-clips of videos. So decoding the
