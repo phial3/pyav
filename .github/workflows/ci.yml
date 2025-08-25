@@ -15,8 +15,8 @@ jobs:
     name: Lints
     runs-on: ubuntu-latest
     container: jrottenberg/ffmpeg:7.1-ubuntu
-    permissions:
-      contents: read
+#    permissions:
+#      contents: read
 
     steps:
       - name: Checkout
@@ -45,8 +45,8 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     container: jrottenberg/ffmpeg:7.1-ubuntu
-    permissions:
-      contents: read
+#    permissions:
+#      contents: read
 
     steps:
       - name: Checkout
