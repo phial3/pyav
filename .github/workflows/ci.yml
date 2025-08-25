@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt update
-          apt install -y --no-install-recommends clang curl pkg-config python3
+          apt install -y --no-install-recommends clang curl ca-certificates pkg-config python3
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
@@ -57,7 +57,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt update
-          apt install -y --no-install-recommends clang curl pkg-config python3
+          apt install -y --no-install-recommends clang curl ca-certificates pkg-config python3
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
